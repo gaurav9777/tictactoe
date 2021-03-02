@@ -1,3 +1,5 @@
+// Author:Atma Gaurav
+
 package com.example.myapplication.tictoe;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected int gameStatus(){
-
+//result options
         //0 Continue
         //1 X Wins
         //2 O Wins
@@ -85,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             if(check_Diagonal('O'))
                 return 2;
         }
-
+//check if the board is full done means both players complete their terns...
         boolean boardFull = true;
         for(int i = 0; i< grid_size; i++){
             for(int j = 0; j< grid_size; j++){
@@ -99,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             return -1;
         else return 0;
     }
-
+//first condition is to check if three same character is present in diagonal.... 
     protected boolean check_Diagonal(char player){
         int count_Equal1 = 0,count_Equal2 = 0;
         for(int i = 0; i< grid_size; i++)
@@ -110,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                 count_Equal2++;
         return count_Equal1 == grid_size || count_Equal2 == grid_size;
     }
-
+//first condition is to check if three same character is present in row....   
     protected boolean check_Row_Equality(int r, char player){
         int count_Equal=0;
         for(int i = 0; i< grid_size; i++){
@@ -121,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
         return count_Equal == grid_size;
     }
 
+//first condition is to check if three same character is present in coloumn....
     protected boolean check_Column_Equality(int c, char player){
         int count_Equal=0;
         for(int i = 0; i< grid_size; i++){
@@ -134,7 +137,9 @@ public class MainActivity extends AppCompatActivity {
     protected boolean Cell_Set(int r, int c){
         return !(my_board[r][c]==' ');
     }
-
+//two condition to stop the match...
+    //1:set is full
+    //2.any player win the match means count of a player is high than others..
     protected void stopMatch(){
         for(int i = 0; i< gameBoard.getChildCount(); i++){
             TableRow row = (TableRow) gameBoard.getChildAt(i);
@@ -144,7 +149,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
+//view of result in bottom of screen 
+    
     View.OnClickListener Move(final int r, final int c, final TextView tv){
 
         return new View.OnClickListener() {
